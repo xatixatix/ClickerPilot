@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.xatixatix.clickerpilot.databinding.FragmentStartMenuBinding
 
 class StartMenuFragment : Fragment() {
@@ -17,5 +18,14 @@ class StartMenuFragment : Fragment() {
     ): View? {
         _binding = FragmentStartMenuBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.startGameAction.setOnClickListener {
+            val action = StartMenuFragmentDirections.actionStartMenuFragmentToBaseGameFragment();
+            findNavController().navigate(action)
+        }
     }
 }

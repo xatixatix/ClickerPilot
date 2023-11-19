@@ -3,12 +3,12 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">#394153</item>
         <item name="colorPrimaryVariant">#394153</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#394153</item>
         <item name="colorSecondaryVariant">#394153</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#1AC61D</item>
+        <item name="android:statusBarColor">#000000</item>
     </style>
 </resources>

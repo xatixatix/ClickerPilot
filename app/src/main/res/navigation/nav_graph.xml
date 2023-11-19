@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_start_menu">
         <action
-            android:id="@+id/start_game_action"
+            android:id="@+id/action_startMenuFragment_to_baseGameFragment"
             app:destination="@id/baseGameFragment" />
     </fragment>
     <fragment
@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_base_game">
         <action
-            android:id="@+id/back_to_menu_action"
+            android:id="@+id/action_baseGameFragment_to_startMenuFragment"
             app:destination="@id/startMenuFragment" />
     </fragment>
 </navigation>
