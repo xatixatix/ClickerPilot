@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.room:room-common:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
     val fragmentVersion = "1.6.2"
     val navVersion = "2.7.5"
     val lifecycleVersion = "2.6.2"

@@ -22,5 +22,17 @@
         <action
             android:id="@+id/action_baseGameFragment_to_startMenuFragment"
             app:destination="@id/startMenuFragment" />
+        <action
+            android:id="@+id/action_baseGameFragment_to_statsPageFragment"
+            app:destination="@id/statsPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statsPageFragment"
+        android:name="com.xatixatix.clickerpilot.StatsPageFragment"
+        android:label="fragment_stats_page"
+        tools:layout="@layout/fragment_stats_page" >
+        <action
+            android:id="@+id/action_statsPageFragment_to_baseGameFragment"
+            app:destination="@id/baseGameFragment" />
     </fragment>
 </navigation>

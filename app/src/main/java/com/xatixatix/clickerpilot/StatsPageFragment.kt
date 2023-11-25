@@ -6,33 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.xatixatix.clickerpilot.databinding.FragmentStartMenuBinding
+import com.xatixatix.clickerpilot.databinding.FragmentStatsPageBinding
 
-class StartMenuFragment : Fragment() {
+class StatsPageFragment : Fragment() {
     private val viewModel: PlayerViewModel by activityViewModels {
         PlayerViewModelFactory(
             (activity?.application as ClickerPilotApplication).database.playerDao()
         )
     }
 
-    private var _binding: FragmentStartMenuBinding? = null
+    private var _binding: FragmentStatsPageBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentStartMenuBinding.inflate(inflater, container, false)
+        _binding = FragmentStatsPageBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.startGameAction.setOnClickListener {
-            val action = StartMenuFragmentDirections.actionStartMenuFragmentToBaseGameFragment();
-            findNavController().navigate(action)
-        }
     }
 }

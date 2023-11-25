@@ -2,4 +2,9 @@
     <string name="app_name">ClickerPilot</string>
     <string name="back">Back</string>
     <string name="start_game">Start game</string>
+    <string name="stats">Stats</string>
+    <string name="player">player</string>
+    <string name="your_player_name">Your player name:</string>
+    <string name="currency">Currency: 0</string>
+    <string name="when_you_click_this_button_you_get_currency">When you click this button, you get currency.</string>
 </resources>
