@@ -1,12 +1,14 @@
 package com.xatixatix.clickerpilot
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.xatixatix.clickerpilot.data.Player
 import com.xatixatix.clickerpilot.databinding.FragmentStartMenuBinding
 
 class StartMenuFragment : Fragment() {
@@ -31,6 +33,15 @@ class StartMenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.startGameAction.setOnClickListener {
+            if (!viewModel.isPlayerExistsByName(binding.playerName.text.toString())) {
+                viewModel.createPlayer(Player(
+                    name = binding.playerName.text.toString(),
+                    currencyAmount = 0,
+                    playTime = 0
+                ))
+            } else {
+                Log.i("Player creation", "Player is already created, no action needed.")
+            }
             val action = StartMenuFragmentDirections.actionStartMenuFragmentToBaseGameFragment();
             findNavController().navigate(action)
         }
