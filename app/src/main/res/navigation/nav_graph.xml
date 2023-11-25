@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_baseGameFragment_to_statsPageFragment"
             app:destination="@id/statsPageFragment" />
+        <action
+            android:id="@+id/action_baseGameFragment_to_playersPageFragment"
+            app:destination="@id/playersPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/statsPageFragment"
@@ -33,6 +36,15 @@
         tools:layout="@layout/fragment_stats_page" >
         <action
             android:id="@+id/action_statsPageFragment_to_baseGameFragment"
+            app:destination="@id/baseGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playersPageFragment"
+        android:name="com.xatixatix.clickerpilot.PlayersPageFragment"
+        android:label="fragment_players_page"
+        tools:layout="@layout/fragment_players_page" >
+        <action
+            android:id="@+id/action_playersPageFragment_to_baseGameFragment"
             app:destination="@id/baseGameFragment" />
     </fragment>
 </navigation>

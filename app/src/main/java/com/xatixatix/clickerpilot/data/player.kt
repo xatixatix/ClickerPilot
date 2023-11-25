@@ -11,7 +11,7 @@ data class Player(
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "currencyAmount")
-    val currencyAmount: Long,
+    var currencyAmount: Long,
     @ColumnInfo(name = "playTime")
     val playTime: Long
 )

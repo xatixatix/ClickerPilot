@@ -11,12 +11,17 @@ import com.xatixatix.clickerpilot.data.PlayerDao
 import kotlinx.coroutines.launch
 
 class PlayerViewModel(private val playerDao: PlayerDao) : ViewModel() {
-    private val players: LiveData<List<Player>> = playerDao.getPlayerList().asLiveData()
+    var players: LiveData<List<Player>> = playerDao.getPlayerList().asLiveData()
+    var currentPlayer: Player = Player(0, "empty", 0, 0)
 
     fun isPlayerExistsByName(name: String): Boolean {
-        for (player in players.value!!) {
-            if (player.name == name) {
-                return true
+        Log.i("Players", players.value.toString())
+        if (players.value?.isNotEmpty() == true) {
+            for (player in players.value!!) {
+                if (player.name == name) {
+                    currentPlayer = player
+                    return true
+                }
             }
         }
         return false
@@ -26,32 +31,14 @@ class PlayerViewModel(private val playerDao: PlayerDao) : ViewModel() {
         viewModelScope.launch {
             playerDao.insert(player)
         }
+        currentPlayer = player
         Log.i("Player creation", "New player created.")
     }
 
-    fun updatePlayer(
-        playerId: Int,
-        playerName: String,
-        playerCurrencyAmount: Long,
-        playerPlayTime: Long
-    ) {
-        val updatedPlayer = Player(
-            playerId,
-            playerName,
-            playerCurrencyAmount,
-            playerPlayTime
-        )
-        updatePlayer(updatedPlayer)
-    }
-
-    private fun updatePlayer(player: Player) {
+    fun updatePlayer(player: Player) {
         viewModelScope.launch {
             playerDao.update(player)
         }
-    }
-
-    fun getPlayerByName(name: String): LiveData<Player> {
-        return playerDao.getPlayer(name).asLiveData()
     }
 }
 

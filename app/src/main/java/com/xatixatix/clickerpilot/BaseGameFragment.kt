@@ -31,12 +31,21 @@ class BaseGameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.actionBaseGameFragmentToStatsPageFragment.setOnClickListener {
-            val action = BaseGameFragmentDirections.actionBaseGameFragmentToStatsPageFragment();
+            val action = BaseGameFragmentDirections.actionBaseGameFragmentToStatsPageFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.actionBaseGameFragmentToPlayersPageFragment.setOnClickListener {
+            val action = BaseGameFragmentDirections.actionBaseGameFragmentToPlayersPageFragment()
             findNavController().navigate(action)
         }
 
         binding.clickToGetCurrency.setOnClickListener {
-            //TODO: add +1 to currency
+            viewModel.currentPlayer.currencyAmount += 1
+            viewModel.updatePlayer(viewModel.currentPlayer)
+            binding.currencyValueText.text = viewModel.currentPlayer.currencyAmount.toString()
         }
+
+        binding.currencyValueText.text = viewModel.currentPlayer.currencyAmount.toString()
     }
 }

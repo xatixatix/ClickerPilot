@@ -34,15 +34,17 @@ class StartMenuFragment : Fragment() {
 
         binding.startGameAction.setOnClickListener {
             if (!viewModel.isPlayerExistsByName(binding.playerName.text.toString())) {
-                viewModel.createPlayer(Player(
-                    name = binding.playerName.text.toString(),
-                    currencyAmount = 0,
-                    playTime = 0
-                ))
+                val newPlayer = Player(
+                        name = binding.playerName.text.toString(),
+                        currencyAmount = 0,
+                        playTime = 0
+                    )
+                viewModel.createPlayer(newPlayer)
+                viewModel.currentPlayer = newPlayer
             } else {
                 Log.i("Player creation", "Player is already created, no action needed.")
             }
-            val action = StartMenuFragmentDirections.actionStartMenuFragmentToBaseGameFragment();
+            val action = StartMenuFragmentDirections.actionStartMenuFragmentToBaseGameFragment()
             findNavController().navigate(action)
         }
     }

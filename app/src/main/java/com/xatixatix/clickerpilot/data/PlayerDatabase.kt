@@ -1,6 +1,7 @@
 package com.xatixatix.clickerpilot.data
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -19,7 +20,7 @@ abstract class PlayerDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     PlayerDatabase::class.java,
-                    "item_database"
+                    "player_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()
